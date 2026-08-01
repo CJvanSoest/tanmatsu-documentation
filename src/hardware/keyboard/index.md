@@ -1,10 +1,10 @@
 # Keyboard
 
 Tanmatsu has a built-in QWERTY keyboard. Besides the letter, number and symbol
-keys it carries a row of coloured function keys and an **AltGr** layer that
+keys it carries a row of colored function keys and an **AltGr** layer that
 gives direct access to accented letters and common symbols.
 
-The keyboard matrix is scanned by the ESP32-C6 coprocessor; the ESP32-P4
+The keyboard matrix is scanned by the CH32V203 coprocessor; the ESP32-P4
 receives decoded key events through the
 [badge BSP](https://github.com/badgeteam/esp32-component-badge-bsp/blob/main/targets/tanmatsu/badge_bsp_input.c).
 Each key event provides an ASCII byte, a UTF-8 string (already resolved for the
@@ -12,20 +12,20 @@ active modifier layer) and a modifier bitmask.
 
 ## Function keys
 
-The coloured keys along the top row are the navigation / function keys
+The colored keys along the top row are the navigation / function keys
 (`BSP_INPUT_NAVIGATION_KEY_F1`…`F6`). Their meaning is defined by the running
-application, so the label differs per app. In the launcher, for example:
+application.
 
-| Symbol | Colour | Event | Launcher action |
-|---|---|---|---|
-| ✕ | red | `F1` | back / cancel |
-| △ | orange | `F2` | — |
-| ☐ | yellow | `F3` | blank / wake the display |
-| ◯ | green | `F4` | Information |
-| ☁ | blue | `F5` | Settings |
-| ◇ | magenta | `F6` | USB mode |
+| Symbol | Color   | Event |
+|--------|---------|-------|
+| ✕      | red     | `F1`  |
+| △     | orange  | `F2`  |
+| ☐      | yellow  | `F3`  |
+| ◯     | green   | `F4`  |
+| ☁      | blue    | `F5`  |
+| ◇     | magenta | `F6`  |
 
-Applications reuse the same coloured keys for their own actions — a chat app
+Applications reuse the same colored keys for their own actions — a chat app
 might put an emoji picker on the green ◯ and a special-character picker on the
 blue ☁, for instance.
 
@@ -72,3 +72,5 @@ The authoritative layout is the keymap table in
 [`badge_bsp_input.c`](https://github.com/badgeteam/esp32-component-badge-bsp/blob/main/targets/tanmatsu/badge_bsp_input.c#L352).
 Whether a given character is displayed depends on the running application's font
 coverage.
+
+The keyboard layout is based on the `US international with Alt Gr` keyboard layout.
